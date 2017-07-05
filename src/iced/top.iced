@@ -1,6 +1,7 @@
 
 {scrypt,pbkdf2,HMAC_SHA256,WordArray,util} = require 'triplesec'
 {generateSeed, deriveKeypair, deriveAddress} = require('ripple-keypairs')
+ssss = require('secrets.js')
 params = require('../json/params.json')
 
 #=====================================

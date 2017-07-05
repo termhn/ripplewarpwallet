@@ -18,8 +18,8 @@ class Warper
   escape_user_content: (s) -> s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\"/g, '&quot;').replace(/\'/g, '&#39;')
 
   attach_ux: ->
-    $('#btn-submit').on 'click',            => @click_submit()
-    $('#btn-reset').on 'click',             => @click_reset()
+    $('#btn-submit-warp').on 'click',            => @click_submit_warp()
+    $('#btn-reset-warp').on 'click',             => @click_reset_warp()
     $('#salt').on       'change',           => @salt_change()
     $('#salt').on       'keyup',            => @salt_change()
     $('#checkbox-salt-confirm').on 'click', => @any_change()
@@ -33,7 +33,7 @@ class Warper
     $('.progress-form').hide()
     $('#private-key').val ''
     $('#public-address').val ''
-    $('#btn-submit').attr('disabled', false).show().html 'Generate'
+    $('#btn-submit-warp').attr('disabled', false).show().html 'Generate'
     pp   = $('#passphrase').val()
     salt = $('#salt').val()
     chk  = $('#checkbox-salt-confirm').is ":checked"
@@ -49,11 +49,11 @@ class Warper
       warn = "Consider a larger passphrase"
 
     if err
-      $('#btn-submit').attr('disabled', true).html err
+      $('#btn-submit-warp').attr('disabled', true).html err
     else if warn
-      $('#btn-submit').attr('disabled', false).html warn
+      $('#btn-submit-warp').attr('disabled', false).html warn
     else
-      $('#btn-submit').attr('disabled', false).html "Generate"
+      $('#btn-submit-warp').attr('disabled', false).html "Generate"
     $('.output-form').hide()
     $('#public-address-qr').html ''
     $('#private-key-qr').html ''
@@ -92,8 +92,8 @@ class Warper
       $('.progress-form .bar').css('width', "#{w}%")
       $('.progress-form .bar .progress-pbkdf2').html "&nbsp; pbkdf2 #{@commas o.i} of #{@commas o.total}"
 
-  click_reset: ->
-    $('#btn-submit').attr('disabled', false).show().html 'Please enter a passphrase'
+  click_reset_warp: ->
+    $('#btn-submit-warp').attr('disabled', false).show().html 'Please enter a passphrase'
     $('#passphrase, #public-address, #private-key').val ''
     if not window.SALT_DEFAULT?
       $('#salt').val ''
@@ -114,9 +114,9 @@ class Warper
     (new QRCode "public-address-qr", params).makeCode pub
     (new QRCode "private-key-qr", params).makeCode priv
 
-  click_submit: ->
-    $('#btn-submit').attr('disabled', true).html 'Running...'
-    $('#btn-reset').attr('disabled', true).html 'Running...'
+  click_submit_warp: ->
+    $('#btn-submit-warp').attr('disabled', true).html 'Running...'
+    $('#btn-reset-warp').attr('disabled', true).html 'Running...'
     $('#passphrase, #salt, checkbox-salt-confirm').attr 'disabled', true
     $('.progress-pbkdf2, .progress-scrypt').html ''
     $('.progress-form').show()
@@ -133,8 +133,8 @@ class Warper
         $('#salt').attr 'disabled', false
       $('.progress-form').hide()
       $('.output-form').show()
-      $('#btn-submit').hide()
-      $('#btn-reset').attr('disabled', false).html 'Clear &amp; reset'
+      $('#btn-submit-warp').hide()
+      $('#btn-reset-warp').attr('disabled', false).html 'Clear &amp; reset'
       $('#public-address').val res.address
       $('#private-key').val res.secret
       @write_qrs res.address, res.secret
