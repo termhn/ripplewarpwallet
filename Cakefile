@@ -56,7 +56,7 @@ deploy = (orig_branch, cb) ->
   await fs.writeFile "index.html", html, {encoding: "utf8"}, esc defer()
   cmds = [
     "git add index.html"
-    `git commit -m "deploy v#{version}"`,
+    "git commit -m \"deploy v#{version}\"",
     "git push",
     "git checkout master"
   ]

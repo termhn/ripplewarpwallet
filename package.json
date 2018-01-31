@@ -1,19 +1,19 @@
 {
   "name": "ripplewarpwallet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Open Source JavaScript Client-Side Ripple Wallet Generator Using scrypt",
   "dependencies": {
-    "brew": "*",
-    "buffer": "^4.9.1",
-    "browserify": "*",
-    "colors": "*",
-    "iced-coffee-script": "^1.7.1-f",
-    "iced-error": "*",
-    "iced-runtime": "^1.0.1",
-    "iced-test": "*",
-    "iced-utils": ">=0.1.1",
-    "icsify": "*",
-    "ripple-keypairs": "^0.10.0",
+    "brew": "0.0.8",
+    "buffer": "5.0.8",
+    "browserify": "15.2.0",
+    "colors": "1.1.2",
+    "iced-coffee-script": "108.0.11",
+    "iced-error": "0.0.12",
+    "iced-runtime": "1.0.1",
+    "iced-test": "0.0.23",
+    "iced-utils": "0.1.26",
+    "icsify": "0.7.0",
+    "ripple-keypairs": "0.10.1",
     "triplesec": "keybase/triplesec#header_v3"
   },
   "repository": {
@@ -21,12 +21,17 @@
     "url": "git://github.com/termhn/ripplewarpwallet"
   },
   "keywords": [
-    "ripple address wallet generator brainwallet"
+    "ripple address wallet generator brainwallet scrypt"
   ],
-  "author": "",
-  "license": "",
+  "author": "Gray Olson, Max Khron, Chris Coyne",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/termhn/ripplewarpwallet/issues"
+  },
+  "scripts": {
+      "build": "icake build",
+      "start": "icake watch",
+      "deploy": "icake deploy"
   },
   "false": {}
 }
