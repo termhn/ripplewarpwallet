@@ -62,25 +62,19 @@ In order to verify that the version available online is the same as what is gene
 
 ## Development
 
-Ripple uses npm to manage its dependencies. Run
+Ripple uses yarn to manage its dependencies. Run
 ```sh
-$ npm install
+$ yarn install
 ```
 to install the needed dependencies.
 
 ## Build
 
-To build the site from source, we depend on iced-coffee-script. Install it by running
 ```sh
-$ npm install -g iced-coffee-script
-$ npm install -d
-```
-Then do
-```sh
-$ icake build
+$ yarn build
 ```
 to build once, or
 ```sh
-$ icake watch
+$ yarn start
 ```
 to watch for changes and re-build during development.
