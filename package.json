@@ -30,8 +30,9 @@
   },
   "scripts": {
       "build": "icake build",
-      "start": "icake watch",
-      "deploy": "icake deploy"
+      "start": "parcel warp_src.html",
+      "deploy": "icake deploy",
+      "parcelbuild": "parcel build warp_src.html --no-minify --public-url ./"
   },
   "false": {}
 }
