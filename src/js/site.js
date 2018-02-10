@@ -4,6 +4,9 @@
  * DS207: Consider shorter variations of null checks
  * Full docs: https://github.com/decaffeinate/decaffeinate/blob/master/docs/suggestions.md
  */
+
+import 'babel-polyfill'
+import qr from 'qrcode-generator'
 import '../css/bootstrap.min.css'
 import '../css/site.css'
 import run from './run.js'
@@ -96,7 +99,6 @@ class Warper {
 
   salt_change() {
     const salt = $('#salt').val();
-    console.log(salt)
     $('#checkbox-salt-confirm').attr('checked', false);
     if (!salt.length) {
       $('.salt-confirm').hide();
@@ -142,14 +144,16 @@ class Warper {
   }
 
   write_qrs(pub, priv) {
-    const params = {
-      width:        256,
-      height:       256,
-      colorLight:   "#f8f8f4",
-      correctLevel: QRCode.CorrectLevel.H
-    };
-    (new QRCode("public-address-qr", params)).makeCode(pub);
-    (new QRCode("private-key-qr", params)).makeCode(priv);
+    let typeNumber = 4
+    let errorLevel = 'H'
+    var pubqr = qr(typeNumber, errorLevel);
+    var privqr = qr(typeNumber, errorLevel);
+    pubqr.addData(pub)
+    privqr.addData(priv)
+    pubqr.make()
+    privqr.make()
+    document.getElementById("public-address-qr").innerHTML = pubqr.createImgTag(8);
+    document.getElementById("private-key-qr").innerHTML = privqr.createImgTag(8);
   }
 
   click_submit() {
