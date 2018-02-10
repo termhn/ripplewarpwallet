@@ -9,7 +9,7 @@ import 'babel-polyfill'
 import qr from 'qrcode-generator'
 import '../css/bootstrap.min.css'
 import '../css/site.css'
-import run from './run.js'
+import warp from './warp.js'
 import package from '../../package.json'
 
 var jquery = require('./jquery-1.10.2.min.js')
@@ -163,7 +163,7 @@ class Warper {
     $('.progress-pbkdf2, .progress-scrypt').html('');
     $('.progress-form').show();
 
-    run({
+    warp({
       passphrase : $('#passphrase').val(),
       salt : $('#salt').val(),
       progress_hook : o => this.progress_hook(o),

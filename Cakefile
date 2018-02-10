@@ -1,12 +1,10 @@
 fs          = require 'fs'
 path        = require 'path'
 coff        = require 'iced-coffee-script'
-browserify  = require 'browserify'
 exec        = require('child_process').exec
 {version}   = require('./package.json')
 crypto      = require('crypto')
 {make_esc}  = require 'iced-error'
-{brew}      = require 'brew'
 
 # -----------------------------------------------------------
 #
@@ -38,6 +36,8 @@ build = (cb) ->
     await fs.symlink fullname, latest, esc defer()
     # delete any old copies of this version
     await clean_old_ones sha256, esc defer()
+  else
+    console.log "New version is identical to previous version, not writing anything."
   cb null
 
 deploy = (orig_branch, cb) ->
@@ -83,24 +83,6 @@ task 'build', "build the html file", (cb) ->
   throw err if err?
   cb?()
 
-# task 'watch', "build repeatedly", (cb) ->  
-#   await build defer err
-#   ready = false
-#   b = new brew {
-#     match:    /^.*$/
-#     includes: ['./src/', './warp_src.html']
-#     compile:  (path, txt, cb)  -> cb null, txt 
-#     join:     (strs, cb)       -> cb null, (strs.join "\n") 
-#     compress: (str,  cb)    -> cb null, str
-#     onChange: ->
-#       while not b.isReady()
-#         await setTimeout defer(), 500
-#         console.log "waiting for build"
-#       await build defer err
-#   }
-#   while true
-#     await setTimeout defer(), 1000
-
 task 'deploy', "deploy current version on master to gh-pages", (cb) ->
   await exec "git rev-parse --abbrev-ref HEAD", defer err, orig_branch, stderr
   throw err if err?
@@ -118,7 +100,7 @@ hash_data = (data) ->
   hasher.digest('hex')
 
 clean_old_ones = (new_one, cb) ->
-  await fs.readdir "./web", defer err, files
+  await fs.readdir "./dist", defer err, files
   rxx = "warp_#{version}_SHA256_([a-f0-9]+)\.html"
   for file in files 
     if ((m = file.match rxx)? and (m[1] isnt new_one))
@@ -171,6 +153,6 @@ token_build_and_drop = (html, cb) ->
   cb html
 
 do_parcel_build = (cb) ->
-  await exec_and_print "yarn parcelbuild", defer err
+  await exec_and_print "yarn parcel", defer err
   cb err if err?
   cb() 
