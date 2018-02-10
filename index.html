@@ -1,99 +1,66 @@
 <!doctype html>
 <html>
 <head>
-  <title>RippleWarpWallet - deterministic ripple wallet generator</title>
+  <title>RippleWarpWallet - deterministic Ripple wallet generator</title>
   <meta charset="utf-8">
+  <script type="text/javascript">
+
+  // ---------------------------------------------------------------
+  //
+  // Hello, WarpWallet friend!
+  //
+  // If you are saving an offline copy of this file
+  // and would like your salt always pre-filled for
+  // convenience, assign the default value here. You
+  // don't have to stick to the email format in that case.
+  //
+  // A salt shouldn't make you lazy with your passphrase, of course.
+  //
+  //   @maxtaco and @malgorithms
+  //
+  // ---------------------------------------------------------------
+
+  var SALT_DEFAULT = null; // assign a string and save this file.
+
+  </script>
+  <!--
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights of others.
+    The individual copyrights are included throughout the document along with their licenses.
+    Included JavaScript libraries are separated with HTML script tags.
+
+    JavaScript block      License
+    *******************   ***************
+    jQuery                https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt
+    bootstrap (CSS)       https://github.com/twbs/bootstrap/blob/master/LICENSE
+    qrcode.js             MIT (http://davidshimjs.github.io/qrcodejs/)
+    ripple-keypairs       https://github.com/ripple/ripple-keypairs/blob/master/LICENSE
+
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    WarpWallet is available under the BSD-3 License
+
+    Copyright (c) 2013, CrashMix LLC
+
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+    3. Neither the name of CrashMix nor WarpWallet, nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  -->
 </head>
 
-<script type="text/javascript">
 
- // ---------------------------------------------------------------
- //
- // Hello, WarpWallet friend!
- //
- // If you are saving an offline copy of this file
- // and would like your salt always pre-filled for
- // convenience, assign the default value here. You
- // don't have to stick to the email format in that case.
- //
- // A salt shouldn't make you lazy with your passphrase, of course.
- //
- //   @maxtaco and @malgorithms
- //
- // ---------------------------------------------------------------
-
- var SALT_DEFAULT = null; // assign a string and save this file.
-
-</script>
-<!--
-
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  Portions of the all-in-one HTML document contain JavaScript codes that are the copyrights of others.
-  The individual copyrights are included throughout the document along with their licenses.
-  Included JavaScript libraries are separated with HTML script tags.
-
-  JavaScript block      License
-  *******************   ***************
-  jQuery                https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt
-  bootstrap (CSS)       https://github.com/twbs/bootstrap/blob/master/LICENSE
-  browserify            https://github.com/substack/node-browserify/blob/master/LICENSE
-  qrcode.js             MIT (http://davidshimjs.github.io/qrcodejs/)
-  bitaddress.org        https://github.com/pointbiz/bitaddress.org/blob/master/README (MIT)
-    - CryptoJS          https://code.google.com/p/crypto-js/wiki/License (BSD)
-    - JSBN              http://www-cs-students.stanford.edu/~tjw/jsbn/LICENSE (BSD)
-    - Bitcoin           https://github.com/bitcoinjs/bitcoinjs-lib/blob/master/LICENSE (MIT)
-    - EllipticCurve     BSD
-
-  In turn, bitaddress.org has some inline dependencies, which it references
-
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  WarpWallet is available under the BSD-3 License
-
-  Copyright (c) 2013, CrashMix LLC
-
-  All rights reserved.
-
-  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-
-  1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-
-  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-  3. Neither the name of CrashMix nor WarpWallet, nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
-<script type="text/javascript">
-{::src/js/qrcode.js::}
-</script>
-
-<script type="text/javascript">
-{::src/js/jquery-1.10.2.min.js::}
-</script>
-
-<script type="text/javascript">
-window.params  = {::src/json/params.json::};
-window.package = {::package.json::};
-</script>
-
-<script type="text/javascript">
-{::src/coffee/site.coffee::}
-</script>
-
-<script type="text/javascript">
-{::src/js/deps.js::}
-</script>
-
-<style>
-{::src/css/bootstrap.min.css::}
-</style>
-
-<style>
-{::src/css/site.css::}
-</style>
+<script src="./src/js/site.js" type="text/javascript"></script>
 
 
 <!-- ########################################################################################## -->

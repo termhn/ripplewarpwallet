@@ -1,0 +1,5 @@
+build/
+dist/
+src/css/
+src/img/
+.cache/

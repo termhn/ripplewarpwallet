@@ -1,11 +1,14 @@
 {
   "name": "ripplewarpwallet",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Open Source JavaScript Client-Side Ripple Wallet Generator Using scrypt",
-  "dependencies": {
-    "brew": "0.0.8",
+  "main": "lib/js/warp.js",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "buffer": "5.0.8",
-    "browserify": "15.2.0",
     "colors": "1.1.2",
     "iced-coffee-script": "108.0.11",
     "iced-error": "0.0.12",
@@ -13,6 +16,11 @@
     "iced-test": "0.0.23",
     "iced-utils": "0.1.26",
     "icsify": "0.7.0",
+    "parcel-bundler": "termhn/parcel#deterministic",
+    "qrcode-generator": "^1.3.1"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
     "ripple-keypairs": "0.10.1",
     "triplesec": "keybase/triplesec#header_v3"
   },
@@ -29,9 +37,11 @@
     "url": "https://github.com/termhn/ripplewarpwallet/issues"
   },
   "scripts": {
-      "build": "icake build",
-      "start": "icake watch",
-      "deploy": "icake deploy"
+    "build": "icake build",
+    "build-lib": "babel --plugins transform-runtime src/js/warp.js -o lib/js/warp.js",
+    "start": "parcel index.html -d ./build",
+    "deploy": "icake deploy",
+    "parcel": "parcel build index.html --no-minify --no-cache --public-url ./ --out-dir ./build"
   },
   "false": {}
 }
