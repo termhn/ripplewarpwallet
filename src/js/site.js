@@ -6,7 +6,7 @@
  */
 import '../css/bootstrap.min.css'
 import '../css/site.css'
-import run from './top.js'
+import run from './run.js'
 import package from '../../package.json'
 
 var jquery = require('./jquery-1.10.2.min.js')
