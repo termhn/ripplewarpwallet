@@ -61,13 +61,13 @@ This downloads the latest version of the source code from this repository onto y
 yarn install
 ```
 
-This has installed all the dependencies necessary to build the final page. We can build it using
+This has installed all the dependencies necessary to build the final page. Now we need to delete the prebuilt version. Navigate to the `dist` folder and delete `warp_latest.html` and `warp_1.0.3_SHA256_{numbers here}.html` files and delete them. We can then build it using
 
 ```
 yarn build
 ```
 
-Now, the latest version should be installed at `web/warp_1.0.2_SHA256_{numbers here}.html`. You can also access it by clicking on the symbolic link `web/warp_latest.html`. To find this in Windows Explorer, navigate to `C:\Users\<Username>\ripplewarpwallet\web` directory.
+Now, the latest version should be installed at `dist/warp_1.0.3_SHA256_{numbers here}.html`. You can also access it by clicking on the symbolic link `dist/warp_latest.html`. To find this in Windows Explorer, navigate to `C:\Users\<Username>\ripplewarpwallet\dist` directory.
 
 #### macOS
 
@@ -86,7 +86,7 @@ In order to verify that the version available online is the same as what is gene
 3. Navigate to https://termhn.github.io/ripplewarpwallet
 4. Right click the page and click View Source
 5. Press Control-A then Control-C (or Command-A then Command-C on macOS) to copy the page source, then go and paste it into one side of the diff tool.
-5. Open the `ripplewarpwallet/web/warp_1.0.2_SHA256_{numbers}.html` file you built yourself earlier and repeat the same process of rightclick -> view source -> ctrl+A ctrl+C then paste it into the other side of the diff tool
+5. Open the `ripplewarpwallet/dist/warp_1.0.3_SHA256_{numbers}.html` file you built yourself earlier and repeat the same process of rightclick -> view source -> ctrl+A ctrl+C then paste it into the other side of the diff tool
 6. Press compare. In theory, they will be identical. You've now verified that the hosted version is exactly the same as the version you built yourself from the source code. Because of the way images etc. are embedded directly into the html and not referenced as any outside files, by comparing just the one final built html file you can be certain there are really no changes.
 
 ## Development
