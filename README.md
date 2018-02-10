@@ -4,11 +4,40 @@ A ripple brain wallet generator that uses scrypt.
 
 ## How to Use
 
-### Hosted Version
+### Hosted Client Version
 
 For basic use, navigate to https://termhn.github.io/ripplewarpwallet, which is the compiled, hosted version of the latest stable version in this GitHub repo. Deterministic (verifiable) builds are implemented, and it is automatically deployed and hosted on GitHub pages, so you can be sure that the code here is really the same code that is compiled and used on the web version. In order to do verify this yourself, see the How to Verify section below.
 
-### Build Yourself
+### NPM Library
+
+Add to your dependencies with the usual
+
+```
+yarn add ripplewarpwallet
+```
+
+Then use like so:
+
+```javascript
+const warp = require('ripplewarpwallet');
+
+const params = {
+    passphrase : 'testpassword',
+    salt : 'testsalt',
+    progress_hook : progress_output => {/*do something*/}
+};
+
+function callback(result) {
+  const address = res.address;
+  const secret = res.secret;
+  console.log("Address: " + address + " Secret: " + secret);
+}
+
+warp(params, callback);
+```
+
+
+### Build Client Yourself
 
 In order to build RippleWarpWallet yourself, you'll first need to install [git](https://git-scm.com/) and [yarn](https://yarnpkg.com/en/).
 
