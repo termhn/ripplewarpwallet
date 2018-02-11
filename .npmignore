@@ -3,3 +3,4 @@ dist/
 src/css/
 src/img/
 .cache/
+node_modules/
