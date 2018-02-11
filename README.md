@@ -27,7 +27,7 @@ const params = {
     progress_hook : progress_output => {/*do something*/}
 };
 
-function callback(result) {
+function callback(res) {
   const address = res.address;
   const secret = res.secret;
   console.log("Address: " + address + " Secret: " + secret);

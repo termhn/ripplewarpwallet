@@ -13,7 +13,7 @@ const from_utf8 = function(s, i) {
   return ret
 }
 
-export default async function({passphrase, salt, progress_hook}, cb) {
+module.exports = async function({passphrase, salt, progress_hook}, cb) {
   const scrypt_params = { 
     N             : params.N,
     p             : params.p,
@@ -45,8 +45,8 @@ export default async function({passphrase, salt, progress_hook}, cb) {
   let garbage = [s1, s2, scrypt_params.key, pbkdf2_params.key]
   garbage.forEach(obj => obj.scrub())
 
-  seed = generateSeed({entropy: user_seed_final})
-  out = deriveKeypair(seed)
+  const seed = generateSeed({entropy: user_seed_final})
+  let out = deriveKeypair(seed)
   out.secret = seed
   out.address = deriveAddress(out.publicKey)
   cb(out)

@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import qr from 'qrcode-generator'
 import '../css/bootstrap.min.css'
 import '../css/site.css'
-import warp from './warp.js'
+const warp =  require('./warp.js')
 import package from '../../package.json'
 
 var jquery = require('./jquery-1.10.2.min.js')
@@ -159,8 +159,7 @@ class Warper {
     warp({
       passphrase : $('#passphrase').val(),
       salt : $('#salt').val(),
-      progress_hook : o => this.progress_hook(o),
-      params : window.params
+      progress_hook : o => this.progress_hook(o)
     }, res => {
 
       $('#passphrase, #checkbox-salt-confirm').attr('disabled', false);
